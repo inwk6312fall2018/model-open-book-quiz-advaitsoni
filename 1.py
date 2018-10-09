@@ -31,3 +31,14 @@ def burn_card():
 	my_deck.discard(burn)
 	return my_deck
 
+def replace_card(player_name,cards_to_replace):
+	"""to replace cards with new one"""
+	burn_card()	#remove 1st card from deck
+	for i in range(len(cards_to_replace)):	
+		if cards_to_replace[i] in player_name:
+			player_name.remove(cards_to_replace[i])
+			player_name.append(my_deck.draw())
+	return player_list
+
+#a=[player2[1],player2[2]]
+#print(replace_card(player2,a))
