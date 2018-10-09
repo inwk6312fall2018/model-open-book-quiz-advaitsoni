@@ -23,3 +23,11 @@ for card in range(5):
 		my_deck.shuffle()
 		player.append(my_deck.draw())
 print(player_list)	#card list of each player
+
+def burn_card():
+	"""to burn i.e remove 1st card of deck"""
+	global my_deck
+	burn=my_deck.draw()
+	my_deck.discard(burn)
+	return my_deck
+
