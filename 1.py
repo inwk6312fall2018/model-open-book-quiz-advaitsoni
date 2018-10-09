@@ -2,12 +2,12 @@ import pyCardDeck as p
 def deck():
 	#generate card deck
 	card_type=['Heart','Club','Black','Spade']
-	card_no={'K':'King','Q':'Queen','J':'Jack',10:'ten',9:'nine',8:'eight'
-	,7:'seven',6:'six',5:'five',4:'four',3:'three',2:'two','A':'Ace'}
+	card_no={13:'King',12:'Queen',11:'Jack',10:'ten',9:'nine',8:'eight'
+	,7:'seven',6:'six',5:'five',4:'four',3:'three',2:'two',1:'Ace'}
 	cards=[]
 	for i in card_type:
 		for k,v in card_no.items():
-			cards.append(v+' '+'of'+' '+i)
+			cards.append((k,i))
 	return cards
 
 my_deck=p.Deck(deck())
@@ -42,3 +42,21 @@ def replace_card(player_name,cards_to_replace):
 
 #a=[player2[1],player2[2]]
 #print(replace_card(player2,a))
+
+def hand_rankings(a):
+	"""to check ranking of hands"""
+	for i in range(len(a)):
+		b=sorted(a[i])
+		if a[i][0][1]==a[i][1][1]==a[i][2][1]==a[i][3][1]==a[i][4][1] and b[0][0]==1 and b[1][0]==10 and b[2][0]==11 and b[3][0]==12 and b[4][0]==13:
+			print('royal_flush')
+		elif a[i][0][1]==a[i][1][1]==a[i][2][1]==a[i][3][1]==a[i][4][1] and b[1][0]==b[0][0]+1 and b[2][0]==b[0][0]+2 and b[3][0]==b[0][0]+3 and b[4][0]==b[0][0]+4:
+			print('straight_flush')
+
+
+"""
+#to test hand_rankings func
+aa=[[(1,'b'),(10,'b'),(11,'b'),(12,'b'),(13,'b')],[(9,'b'),(10,'b'),(11,'b'),(12,'b'),(13,'b')]]
+print(len(aa))
+print(sorted(aa[0]))
+hand_rankings(aa) 
+"""
