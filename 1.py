@@ -10,20 +10,6 @@ def deck():
 			cards.append((k,i))
 	return cards
 
-my_deck=p.Deck(deck())
-#my_deck.shuffle()	#shuffle deck
-#card=my_deck.draw()	#draw one card
-#print(card)
-player1=[]
-player2=[]
-player_list=[player1,player2]	#list of players
-
-for card in range(5):
-	for player in player_list:
-		my_deck.shuffle()
-		player.append(my_deck.draw())
-print(player_list)	#card list of each player
-
 def burn_card():
 	"""to burn i.e remove 1st card of deck"""
 	global my_deck
@@ -40,9 +26,6 @@ def replace_card(player_name,cards_to_replace):
 			player_name.append(my_deck.draw())
 	return player_list
 
-#a=[player2[1],player2[2]]
-#print(replace_card(player2,a))
-
 def hand_rankings(a):
 	"""to check ranking of hands"""
 	for i in range(len(a)):
@@ -57,12 +40,27 @@ def hand_rankings(a):
 			print('full house')
 		elif b[0][1]==b[1][1]==b[2][1]==b[3][1]==b[4][1] and b[1][0]!=b[0][0]+1 and b[2][0]!=b[1][0]+1 and b[3][0]!=b[2][0]+1 and b[4][0]!=b[3][0]+1:
 			print('flush')
+		elif b[1][0]==b[0][0]+1 and b[2][0]==b[0][0]+2 and b[3][0]==b[0][0]+3 and b[4][0]==b[0][0]+4 and (b[0][1]!=b[1][1] or b[1][1]!=b[2][1] or b[2][1]!=b[3][1] or b[3][1]!=b[4][1] or b[4][1]!=b[0][1]):
+			print('Straight')
+		elif b[0][0]==b[1][0]==b[2][0] or b[1][0]==b[2][0]==b[3][0] or b[2][0]==b[3][0]==b[4][0]:
+			print('three_of_a_kind')
+		elif (b[0][0]==b[1][0] and b[2][0]==b[3][0]) or (b[1][0]==b[2][0] and b[3][0]==b[4][0]) or (b[0][0]==b[1][0] and b[3][0]==b[4][0]):
+			print('two_pair')
+		elif b[0][0]==b[1][0] or b[1][0]==b[2][0] or b[2][0]==b[3][0] or b[3][0]==b[4][0] or b[0][0]==b[4][0]:
+			print('Pair')
 		else:
-			print('none')
+			print('high_card')
 
-#to test hand_rankings func
-aa=[[(1,'b'),(10,'b'),(11,'b'),(12,'b'),(13,'b')],[(9,'b'),(10,'b'),(11,'b'),(12,'b'),(13,'b')],[(9,'b'),(10,'b'),(9,'a'),(9,'f'),(9,'h')],[(9,'b'),(10,'b'),(9,'a'),(10,'f'),(9,'h')],[(7,'b'),(1,'b'),(3,'b'),(10,'b'),(9,'b')]]
-print(len(aa))
-print(sorted(aa[0]))
-hand_rankings(aa) 
 
+my_deck=p.Deck(deck())
+player1=[]
+player2=[]
+player_list=[player1,player2]   #list of players
+
+for card in range(5):
+        for player in player_list:
+                my_deck.shuffle()
+                player.append(my_deck.draw())
+print(player_list)      #card list of each player
+
+hand_rankings(player_list) 
