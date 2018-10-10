@@ -30,9 +30,9 @@ def hand_rankings(a):
 	"""to check ranking of hands"""
 	for i in range(len(a)):
 		b=sorted(a[i])
-		if a[i][0][1]==a[i][1][1]==a[i][2][1]==a[i][3][1]==a[i][4][1] and b[0][0]==1 and b[1][0]==10 and b[2][0]==11 and b[3][0]==12 and b[4][0]==13:
+		if b[0][1]==b[1][1]==b[2][1]==b[3][1]==b[4][1] and b[0][0]==1 and b[1][0]==10 and b[2][0]==11 and b[3][0]==12 and b[4][0]==13:
 			print('royal_flush')
-		elif a[i][0][1]==a[i][1][1]==a[i][2][1]==a[i][3][1]==a[i][4][1] and b[1][0]==b[0][0]+1 and b[2][0]==b[0][0]+2 and b[3][0]==b[0][0]+3 and b[4][0]==b[0][0]+4:
+		elif b[0][1]==b[1][1]==b[2][1]==b[3][1]==b[4][1] and b[1][0]==b[0][0]+1 and b[2][0]==b[0][0]+2 and b[3][0]==b[0][0]+3 and b[4][0]==b[0][0]+4:
 			print('straight_flush')
 		elif b[0][0]==b[1][0]==b[2][0]==b[3][0] or b[1][0]==b[2][0]==b[3][0]==b[4][0]:
 			print('four_of_a_kind')
